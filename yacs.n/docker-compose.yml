@@ -1,0 +1,31 @@
+version: "3.4"
+
+# web (front-end) depends on api (back-end) depends on (db)
+# web -> api -> db [dependency chain]
+# NOTE: env vars are in docker-compose.development.yml or docker-compose.production.yml depending on env
+
+services:
+  yacs_web:
+    restart: unless-stopped
+    container_name: yacs_web # makes logs nicer, otherwise would be yacs_web_1, but is yacs_web
+    build:
+      context: ./src/web
+      dockerfile: Dockerfile
+    depends_on:
+      - yacs_api
+
+  yacs_api:
+    restart: unless-stopped
+    container_name: yacs_api
+    stdin_open: true
+    tty: true
+    build:
+      context: ./src/api/
+      dockerfile: Dockerfile
+    depends_on:
+      - yacs_db
+
+  yacs_db:
+    restart: unless-stopped
+    container_name: yacs_db
+    image: postgres:12-alpine

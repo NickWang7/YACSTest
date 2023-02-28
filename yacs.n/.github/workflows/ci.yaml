@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  backend-unit-tests:
+    name: pytest
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    container: python:3.8
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: yacs
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install -r src/api/requirements.txt -r tests/requirements.txt
+
+      - name: Setup database
+        env:
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASS: postgres
+          DB_NAME: yacs
+          DB_HOST: postgres
+        working-directory: src/api
+        run: |
+          python tables/database_session.py && PYTHONPATH=. alembic upgrade head
+
+      - name: Run unit tests with coverage
+        env:
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASS: postgres
+          DB_NAME: yacs
+          DB_HOST: postgres
+          TEST_CSV: rpi_data/summer-2020.csv
+        run: |
+          bash scripts/test.sh
+
+      - name: Run API unit tests
+        env:
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASS: postgres
+          DB_NAME: yacs
+          DB_HOST: postgres
+        run: |
+          bash src/api/tests/test.sh
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+
+      - name: Build and Run Production
+        run: |
+          docker-compose \
+            -f docker-compose.yml \
+            -f docker-compose.production.yml \
+            up -d &&
+          sleep 10
+        env:
+          AUTO_LE: no
+          SELF_CERT: yes
+          ENABLE_BLOCK: no
+
+      - name: Seed test data
+        working-directory: rpi_data
+        run: |
+          curl --insecure -X POST -H "Content-Type: multipart/form-data" \
+          -F "isPubliclyVisible=on" -F "file=@$FILE_NAME" \
+          $AUTH_ARGS $API_ENDPOINT
+        env:
+          FILE_NAME: fall-2021.csv
+          AUTH_ARGS: ${{ secrets.AUTH_ARGS }}
+          API_ENDPOINT: https://localhost/api/bulkCourseUpload
+
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.7.x &&
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
