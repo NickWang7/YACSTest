@@ -8,18 +8,32 @@
 --     minors TEXT);
 
 -- CREATE TABLE CDI(
---     id INTEGER PRIMARY KEY,
---     choose TEXT);
+--     id SERIAL PRIMARY KEY,
+--     choose TEXT,
+--     user_id INTEGER,
+--     CONSTRAINT fk_user
+--         FOREIGN KEY(user_id)
+--             REFERENCES CLASSES(id)
+--     );
 
-INSERT INTO CLASSES(category, pathway, required, choose, remaining, minors) VALUES
-('Arts / Designs', 'Movie Cinema and Other Stuff', ' ', ' ', ' ', ' '); 
+-- INSERT INTO CLASSES(category, pathway, required, choose, remaining, minors) VALUES
+-- ('"Arts / Designs"', '"Creative Design and Innovation"', ' ', ' ', ' ', ' '); 
                 
+-- INSERT INTO CDI(choose, user_id) VALUES (
+--     '"IHSS 1040 - Documentary in the 21st Century Identity Production"', 3
+-- );
+
+-- ALTER TABLE CDI
+-- RENAME choose TO available;
+
+
+-- SELECT * FROM CLASSES JOIN CDI ON CDI.user_id = CLASSES.id;
 
 -- SELECT EXISTS (
 --     SELECT FROM 
---         CDI
+--         CLASSES
 --     WHERE 
---         classname = '"IHSS 1960 - Remixing in Digital Culture"'
+--          = ' '
 --     );
 
 -- DELETE FROM CLASSES
@@ -29,5 +43,5 @@ INSERT INTO CLASSES(category, pathway, required, choose, remaining, minors) VALU
 -- FROM CLASSES
 -- JOIN CDI2 ON CDI2.choose = CLASSES.choose;
 
--- SELECT * FROM CDI;
-SELECT * FROM CLASSES
+SELECT * FROM CDI;
+SELECT * FROM CLASSES;
