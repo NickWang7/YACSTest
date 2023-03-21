@@ -1,11 +1,11 @@
--- CREATE TABLE CLASSES(
---     id SERIAL PRIMARY KEY,
---     category TEXT, 
---     pathway TEXT, 
---     required TEXT, 
---     choose TEXT, 
---     remaining TEXT, 
---     minors TEXT);
+CREATE TABLE CLASSES(
+    id SERIAL PRIMARY KEY,
+    category TEXT,
+    pathway TEXT);
+    -- required TEXT, 
+    -- choose TEXT, 
+    -- remaining TEXT, 
+    -- minors TEXT);
 
 -- CREATE TABLE CDI(
 --     id SERIAL PRIMARY KEY,
@@ -43,5 +43,5 @@
 -- FROM CLASSES
 -- JOIN CDI2 ON CDI2.choose = CLASSES.choose;
 
-SELECT * FROM CDI;
+-- SELECT * FROM CDI;
 SELECT * FROM CLASSES;
