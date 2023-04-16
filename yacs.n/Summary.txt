@@ -1,0 +1,4 @@
+4/14/23
+Played around with some functions and api calls to test and see whether my printing on my tables would work. 
+So far, I've watched a few videos and tested some things out but I cannot get it to print through YACS.
+Will be working on this more and updating as I go.
