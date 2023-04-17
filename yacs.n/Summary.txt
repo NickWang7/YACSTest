@@ -2,3 +2,9 @@
 Played around with some functions and api calls to test and see whether my printing on my tables would work. 
 So far, I've watched a few videos and tested some things out but I cannot get it to print through YACS.
 Will be working on this more and updating as I go.
+
+4/16/23
+Continued to learn and read over YACS documentation to figure out how to print out everything. 
+I have currently gotten my table to print but the logicistics and the formatting is still a bit off.
+Nonetheless, I think I am making good progress as one of the big things is now out of the way.
+https://www.youtube.com/watch?v=M2NzvnfS-hI <- Link to video
