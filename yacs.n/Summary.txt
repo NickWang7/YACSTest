@@ -8,3 +8,5 @@ Continued to learn and read over YACS documentation to figure out how to print o
 I have currently gotten my table to print but the logicistics and the formatting is still a bit off.
 Nonetheless, I think I am making good progress as one of the big things is now out of the way.
 https://www.youtube.com/watch?v=M2NzvnfS-hI <- Link to video
+
+
