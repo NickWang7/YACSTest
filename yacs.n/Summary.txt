@@ -10,3 +10,8 @@ Nonetheless, I think I am making good progress as one of the big things is now o
 https://www.youtube.com/watch?v=M2NzvnfS-hI <- Link to video
 
 
+4/18/23
+Managed to figure out some formatting issues that were holding me back. Started to play around with api
+code and documentation but will not commit any actual code yet since it does not work. Getting some
+errors with my code connecting to the server so I will look over that tomorrow after my test when
+I have more time.
