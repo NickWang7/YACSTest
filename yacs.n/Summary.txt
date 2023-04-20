@@ -15,3 +15,8 @@ Managed to figure out some formatting issues that were holding me back. Started 
 code and documentation but will not commit any actual code yet since it does not work. Getting some
 errors with my code connecting to the server so I will look over that tomorrow after my test when
 I have more time.
+
+4/19/23
+Had a busy day today so I didnt get too much of a chance to work on things. I kept working and testing
+out portions of my API code and I no longer have connection issues but my code is just wrong. I will
+continue to work on this tomorrow after sleep.
