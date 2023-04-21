@@ -20,3 +20,11 @@ I have more time.
 Had a busy day today so I didnt get too much of a chance to work on things. I kept working and testing
 out portions of my API code and I no longer have connection issues but my code is just wrong. I will
 continue to work on this tomorrow after sleep.
+
+4/20/23
+I worked on writing API code today as I finished most of the important table formatting details.
+I've ran into a few more issues which I believe come from the lack of understanding of the whole YACS
+code so I will work on reading into that tomorrow. I also learned and watched some youtube videos today
+to understand how to create tables in python using postgresql tables. Hopefully I will get closer
+to a finished product tomorrow.
+https://www.youtube.com/watch?v=AKQ3XEDI9Mw <-- one of the videos watched/used

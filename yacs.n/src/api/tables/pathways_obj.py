@@ -58,14 +58,14 @@ class PathwaySession(Base):
     chooseFirst = Column(VARCHAR(length=100))
     one = Column(VARCHAR(length=x))
     if y is not 0:
-        chooseSecond = Column(VARCHAR(length=100))
+        chooseSecondString = Column(VARCHAR(length=100))
         chooseSecond = Column(VARCHAR(length=y))
     if z is not 0:
-
-    location = Column(VARCHAR(length=255))
-    session_type = Column(VARCHAR(length=255))
-    instructor = Column(VARCHAR(length=255))
+        chooseThirdString = Column(VARCHAR(length=100))
+        chooseThird = Column(VARCHAR(length=z))
+    if a is not 0:
+        minorLength = Column(VARCHAR(length=100))
 
     __table_args__ = (
-        PrimaryKeyConstraint('crn', 'section', 'semester', 'day_of_week'),
+        PrimaryKeyConstraint('major', 'pathway', 'chooseFirst', 'one'),
     )
