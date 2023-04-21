@@ -26,11 +26,16 @@ try:
         print("pathway  = ", row[1], "\n")
         print("choose 1 = ", row[2])
         print("1  = ", row[3], "\n")
-        print("choose 2 = ", row[4])
-        print("2  = ", row[5], "\n")
-        print("choose 3 = ", row[6])
-        print("3  = ", row[7], "\n")
-        print("minors = ", row[8])
+        if row[4] is not None:
+            print("choose 2 = ", row[4])
+        if row[5] is not None:    
+            print("2  = ", row[5], "\n")
+        if row[6] is not None:
+            print("choose 3 = ", row[6])
+        if row[7] is not None:
+            print("3  = ", row[7], "\n")
+        if row[8] is not None:
+            print("minors = ", row[8])
 
     # cur.execute(postgreSQL_select_Query2)
     # print("Selecting rows from requirements table using cursor.fetchall")
