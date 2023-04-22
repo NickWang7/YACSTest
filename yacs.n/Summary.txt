@@ -28,3 +28,8 @@ code so I will work on reading into that tomorrow. I also learned and watched so
 to understand how to create tables in python using postgresql tables. Hopefully I will get closer
 to a finished product tomorrow.
 https://www.youtube.com/watch?v=AKQ3XEDI9Mw <-- one of the videos watched/used
+
+4/21/23
+Continued to work on the api. I learned how to clearly define functions and parameters so I have been
+working on that. I also added a little bit of documentation onto the api file to make things more understandable.
+I will continue to work tomorrow.
