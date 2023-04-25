@@ -175,6 +175,11 @@ async def uploadHandler(
     else:
         print(error)
         return Response(error.__str__(), status_code=500)
+    
+@app.post('/api/pathways')
+async def loadPaths():
+    
+    return
 
 @app.post('/api/mapDateRangeToSemesterPart')
 async def map_date_range_to_semester_part_handler(request: Request):
