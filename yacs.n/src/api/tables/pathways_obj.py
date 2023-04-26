@@ -9,6 +9,7 @@ class PathwaySession(Base):
 
     index = 0
     pythonTable = [[]]
+    
     major = Column(VARCHAR(length=100))
     pathway = Column(VARCHAR(length=100))
     chooseFirst = Column(VARCHAR(length=100))
@@ -23,6 +24,7 @@ class PathwaySession(Base):
 
 
     def populate_from_table(table):
+        pythonTable = [[]]
         try:
             conn = psycopg2.connect(
                 database="postgres",
@@ -35,7 +37,41 @@ class PathwaySession(Base):
             cur.execute(postgreSQL_select_Query)
             pathwayTable = cur.fetchall()
             for row in pathwayTable:
-                s
+                tempTable = []
+                # major name
+                tempTable.append(row[0])
+                # pathway
+                tempTable.append(row[1])
+                # choose 1
+                tempTable.append(row[2])
+                # text 1
+                tempTable.append(row[3])
+                # if choose 2 is not none
+                if row[4] is not None:
+                    tempTable.append(row[4])
+                else:
+                    tempTable.append(None)
+                # if text 2 is not null
+                if row[5] is not None:
+                    tempTable.append(row[5])
+                else:
+                    tempTable.append(None)
+                # if choose 3 is not null
+                if row[6] is not None:
+                    tempTable.append(row[6])
+                else:
+                    tempTable.append(None)
+                # if text 3 is not null
+                if row[7] is not None:
+                    tempTable.append(row[7])
+                else:
+                    tempTable.append(None)
+                # if the minors is not null
+                if row[8] is not None:
+                    tempTable.append(row[8])
+                else:
+                    tempTable.append(None)
+                pythonTable.append(tempTable)
         except Exception as error:
             print(error)
         finally:
@@ -43,7 +79,7 @@ class PathwaySession(Base):
                 cur.close()
             if conn is not None:
                 conn.close()    
-        return
+        return pythonTable
     __table_args__ = (
         PrimaryKeyConstraint('major', 'pathway', 'chooseFirst', 'one'),
     )

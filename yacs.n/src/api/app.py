@@ -176,10 +176,11 @@ async def uploadHandler(
         print(error)
         return Response(error.__str__(), status_code=500)
     
+# function should return all the values from the table in a 2d array
 @app.post('/api/pathways')
 async def loadPaths():
-    
-    return
+    arrTemp = []
+    return 
 
 @app.post('/api/mapDateRangeToSemesterPart')
 async def map_date_range_to_semester_part_handler(request: Request):
